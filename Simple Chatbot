@@ -1,0 +1,28 @@
+import random
+def simple_chatbot():
+    responses = {
+        "greeting": ["Hello! How can I help you?", "Hey there! What can I do for you?", "Hi! What's up?"],
+        "goodbye": ["Goodbye! Have a great day.", "See you later!", "Bye! Take care!"],
+        "thanks": ["You're welcome!", "No problem!", "My pleasure!"],
+        "options": ["You can ask me anything.", "Feel free to chat with me.", "What would you like to talk about?"],
+        "weather": ["The weather is nice today.", "It's sunny outside.", "Looks like it might rain later."],
+        "default": ["Sorry, I didn't understand that.", "I'm not sure what you mean.", "Could you please rephrase that?"]
+    }
+print("Welcome! Ask me anything or just say hi.")
+while True:
+        user_input = input("You: ").strip().lower()
+        if 'bye' in user_input or 'exit' in user_input:
+            print("Chatbot:", random.choice(responses["goodbye"]))
+            break
+        elif 'thank' in user_input:
+            print("Chatbot:", random.choice(responses["thanks"]))
+        elif 'weather' in user_input:
+            print("Chatbot:", random.choice(responses["weather"]))
+        elif '?' in user_input:
+            print("Chatbot:", random.choice(responses["options"]))
+        elif any(greeting in user_input for greeting in ['hello', 'hi', 'hey']):
+            print("Chatbot:", random.choice(responses["greeting"]))
+        else:
+            print("Chatbot:", random.choice(responses["default"]))
+if __name__ == "__main__":
+    simple_chatbot()
